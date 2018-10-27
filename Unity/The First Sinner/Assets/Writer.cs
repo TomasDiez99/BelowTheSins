@@ -1,22 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Patterns;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class Writer : MonoBehaviour, IWriter
+public class Writer : ScriptSingleton<Writer>, IWriter
 {
 
 	private TextMeshProUGUI Field => GetComponent<TextMeshProUGUI>();
 
 	private string _textToShow;
-	public bool working;
+	private bool _working;
 	private int _index = 0;
 	private int _frameCounter = 0;
 	private static int _delay = 10;
-	public bool IsWorking() => working;
+	private Queue<string> _textsQueue = new Queue<string>();
+
+	public bool IsWorking() => _working;
+
 
 	public void HurryUp()
 	{
@@ -25,39 +30,50 @@ public class Writer : MonoBehaviour, IWriter
 
 	public void SetDelay(int x)
 	{
-		Assert.IsFalse(x==0);
+		Assert.IsFalse(x == 0);
 		_delay = x;
 	}
 
 	public void SetTextNow(string texto)
 	{
-		throw new System.NotImplementedException();
+		while (_index < _textToShow.Length)
+		{
+			Field.text += _textToShow[_index];
+			_index++;
+		}
+	}
+
+	public void _SetText(string text)
+	{
+		Assert.IsFalse(_working);
+		if (text.Equals(Field.text)) return;
+
+
+		Field.text = "";
+		_textToShow = text;
+		_index = 0;
+		_working = true;
 	}
 
 	public void SetText(string text)
 	{
-		Assert.IsFalse(working);
-		if (text.Equals(Field.text)) return;
-		
-		Field.text = "";
-		_textToShow = text;
-		_index = 0;
-		working = true;
+		_textsQueue.Enqueue(text);
+		_SetText(_textsQueue.Dequeue());
 	}
 
-	public void LazySetText(string text)
+public void LazySetText(string text)
 	{
-		throw new System.NotImplementedException();
+		_textsQueue.Enqueue(text);
 	}
 
 	private void Update()
 	{
 		_frameCounter++;
 		
-		if (!working || _frameCounter%_delay != 0) return; // exit point
+		if (!_working || _frameCounter%_delay != 0) return; // exit point
 		if (_textToShow.Length <= _index)
 		{
-			working = false;
+			_working = false;
 			return;
 		}
 		Field.text += _textToShow[_index];
