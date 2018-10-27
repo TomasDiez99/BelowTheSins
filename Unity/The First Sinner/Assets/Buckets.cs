@@ -4,5 +4,5 @@ using Patterns;
 using UnityEngine;
 
 public class Buckets : ScriptSingleton<Buckets> {
-
+    
 }
