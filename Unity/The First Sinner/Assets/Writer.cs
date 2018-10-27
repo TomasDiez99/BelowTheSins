@@ -1,86 +1,58 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿
+
 using Patterns;
 using TMPro;
-using UnityEngine;
+using UnityEditor.VersionControl;
 using UnityEngine.Assertions;
 
-
-[RequireComponent(typeof(TextMeshProUGUI))]
 public class Writer : ScriptSingleton<Writer>, IWriter
 {
-
-	private TextMeshProUGUI Field => GetComponent<TextMeshProUGUI>();
-
-	private string _textToShow;
-	private bool _working;
-	private int _index = 0;
-	private int _frameCounter = 0;
-	private static int _delay = 10;
-	private Queue<string> _textsQueue = new Queue<string>();
-
-	public bool IsWorking() => _working;
+    private int delay=10, frame=0, i=0;
+    private string textToShow = "";
+    private bool working = false;
 
 
-	public void HurryUp()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public void SetDelay(int x)
-	{
-		Assert.IsFalse(x == 0);
-		_delay = x;
-	}
-
-	public void SetTextNow(string texto)
-	{
-		while (_index < _textToShow.Length)
-		{
-			Field.text += _textToShow[_index];
-			_index++;
-		}
-	}
-
-	public void _SetText(string text)
-	{
-		Assert.IsFalse(_working);
-		if (text.Equals(Field.text)) return;
+    private string Text
+    {
+        get { return GetComponent<TextMeshProUGUI>().text; }
+        set { GetComponent<TextMeshProUGUI>().text = value; }
+    }
 
 
-		Field.text = "";
-		_textToShow = text;
-		_index = 0;
-		_working = true;
-	}
+    public void SetText(string text)
+    {
+        if (working) return;
+        textToShow = text;
+        i = 0;
+        working = true;
+    }
 
-	public void SetText(string text)
-	{
-		_textsQueue.Enqueue(text);
-		_SetText(_textsQueue.Dequeue());
-	}
+    public void HurryUp()
+    {
+        Text = textToShow;
+        i = 0;
+        working = false;
+    }
 
-public void LazySetText(string text)
-	{
-		_textsQueue.Enqueue(text);
-	}
+    public void SetDelay(int x) => delay = x;
 
-	private void Update()
-	{
-		_frameCounter++;
-		
-		if (!_working || _frameCounter%_delay != 0) return; // exit point
-		if (_textToShow.Length <= _index)
-		{
-			_working = false;
-			return;
-		}
-		Field.text += _textToShow[_index];
-		_index++;
-		
-	}
+    public bool IsWorking() => working;
 
-	
-	
+    private void Update()
+    {
+        frame++;
+        if(!working||frame%delay!=0)return;
+
+        if (Completion())
+        {
+            working = false;
+        }
+        else
+        {
+            Text += textToShow[i++];
+        }
+    }
+
+    private bool Completion() => textToShow.Length <= i;
+    
 }

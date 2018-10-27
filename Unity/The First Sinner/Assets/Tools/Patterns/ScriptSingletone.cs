@@ -2,8 +2,11 @@
 namespace Patterns
 {
     using UnityEngine;
-    public abstract class ScriptSingleton<S> : MonoBehaviour where S : ScriptSingleton<S> 
+    public abstract class ScriptSingleton<S> : MonoBehaviour where S : ScriptSingleton<S>
     {
+
+        
+        
         private static S s_instance;
 
         public static S Instance

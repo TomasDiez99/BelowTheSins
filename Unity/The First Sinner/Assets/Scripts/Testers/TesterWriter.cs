@@ -13,40 +13,35 @@ namespace Testers
         private string text = "";
 
         private AbstractDiscreteInput
-            writenow, //A
-            enqueue, //B
-            writecommon,//C
+
+            settext, //B
             hurryup;//D
-            
+
         private void Awake()
         {
-            writenow = new DiscreteKeyboard(KeyCode.A);
-            enqueue = new DiscreteKeyboard(KeyCode.B);
-            writecommon = new DiscreteKeyboard(KeyCode.C);
-            hurryup = new DiscreteKeyboard(KeyCode.D);
+
+            settext = new DiscreteKeyboard(KeyCode.E);
             
-            writenow.Event += WritenowOnEvent;
-            enqueue.Event += EnqueueOnEvent;  
-            writecommon.Event += WritecommonOnEvent;
-            hurryup += 
+            hurryup = new DiscreteKeyboard(KeyCode.H);
+            
+ 
+
+
+            settext.Event += SettextOnEvent;
+            hurryup.Event += Writer.HurryUp;
+
         }
 
-        private void WritecommonOnEvent()
+        private void HurryupOnEvent()
+        {
+            Writer.HurryUp();
+        }
+
+
+        private void SettextOnEvent()
         {
             Writer.SetText(text);
         }
-
-        private void EnqueueOnEvent()
-        {
-            Writer.LazySetText(text);
-        }
-
-        private void WritenowOnEvent()
-        {
-            Writer.SetTextNow(text);
-        }
-        
-        
         
         
     }
