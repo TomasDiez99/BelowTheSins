@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class Writer : MonoBehaviour
+public class Writer : MonoBehaviour, IWriter
 {
 
 	private TextMeshProUGUI Field => GetComponent<TextMeshProUGUI>();
@@ -18,12 +18,22 @@ public class Writer : MonoBehaviour
 	private static int _delay = 10;
 	public bool IsWorking() => working;
 
+	public void HurryUp()
+	{
+		throw new System.NotImplementedException();
+	}
+
 	public void SetDelay(int x)
 	{
 		Assert.IsFalse(x==0);
 		_delay = x;
 	}
-	
+
+	public void SetTextNow(string texto)
+	{
+		throw new System.NotImplementedException();
+	}
+
 	public void SetText(string text)
 	{
 		Assert.IsFalse(working);
@@ -33,6 +43,11 @@ public class Writer : MonoBehaviour
 		_textToShow = text;
 		_index = 0;
 		working = true;
+	}
+
+	public void LazySetText(string text)
+	{
+		throw new System.NotImplementedException();
 	}
 
 	private void Update()
