@@ -28,6 +28,11 @@ public class DemonManager : ScriptSingleton<DemonManager>
     public IDemon Ira { get; } = new PlaceHolderDemon();
     public IDemon Pereza { get; } = new PlaceHolderDemon();
     public IDemon Codicia { get; } = new PlaceHolderDemon();
+    
+    
+    
+    
+    
 }
 
 public class PlaceHolderDemon : IDemon
