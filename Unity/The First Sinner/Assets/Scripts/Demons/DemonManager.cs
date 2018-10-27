@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Patterns;
 using UnityEngine;
 
@@ -39,5 +38,10 @@ namespace Demons
         {
             return EveryDemon.ToArray().Rand();
         }
+    
+    
+    
+    
+    
     }
 }
