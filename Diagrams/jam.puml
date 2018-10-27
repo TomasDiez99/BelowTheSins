@@ -1,0 +1,30 @@
+@startuml
+
+class GiverSinners {
+}
+
+class GiverPhrase{
+}
+
+abstract class Phrases{
+    -phrase:String
+    -demon:Demon[]
+    +HasDemon(d:Demon)    
+}
+
+
+
+class Sinner{
+    -Image:Sprite
+    -phrase:Phrase
+
+}
+
+class Demon{
+    score:float
+    +Increment()
+    +Decrement()
+}
+
+
+@enduml

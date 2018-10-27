@@ -1,23 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using Patterns;
 using UnityEngine;
 
 namespace Demons
 {
-    public interface IDemon
-    {
-        float Health { get; }
-    }
-
-
-
-    public interface IPhrase
-    {
-        string Demon { get; }
-        string Content { get; }
-        List<IDemon> SinsRelated { get; }
-    }
     /// <summary>
     /// Contents all demons (Statically)
     /// </summary>
@@ -35,10 +21,5 @@ namespace Demons
     
     
     
-    }
-
-    public class PlaceHolderDemon : IDemon
-    {
-        public float Health { get; }
     }
 }
