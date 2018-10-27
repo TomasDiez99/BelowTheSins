@@ -8,6 +8,6 @@ namespace Demons
     {
         string Demon {get;}
         string Content { get; }
-        List<IDemon> SinsRelated { get; }
+        List<IDemonParsed> SinsRelated { get; }
     }
 }

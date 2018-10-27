@@ -20,13 +20,13 @@ namespace Sinners
     {
         public string text;
         [Range(1,15)]public int delayAtShowText;
-        public IDemon demon;
+        public IDemonParsed DemonParsed;
 
-        public Confesion(IDemon demon, string text)
+        public Confesion(IDemonParsed demonParsed, string text)
         {
             delayAtShowText = 10;
             this.text = text;
-            this.demon = demon;    
+            this.DemonParsed = demonParsed;    
         }
     }
 }

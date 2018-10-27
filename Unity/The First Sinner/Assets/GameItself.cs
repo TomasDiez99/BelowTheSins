@@ -4,12 +4,13 @@ using InputManager;
 using Patterns;
 using UnityEngine;
 using Sinners;
+using UI;
 
 
 public class GameItself : ScriptSingleton<GameItself>
 {
 
-	public Writer ToWrite => FindObjectOfType<Writer>();
+	public DialogWriter ToWrite => FindObjectOfType<DialogWriter>();
 	private AbstractDiscreteInput tecla;
 	
 	private void Start()

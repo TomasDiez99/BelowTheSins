@@ -12,15 +12,15 @@ namespace Demons
     /// </summary>
     public class DemonManager : ScriptSingleton<DemonManager>
     {
-        public IDemon Gula { get; } = new PlaceHolderDemon("Gula");
-        public IDemon Envidia { get; } = new PlaceHolderDemon("Envidia");
-        public IDemon Lujuria { get; } = new PlaceHolderDemon("Lujuria");
-        public IDemon Soberbia { get; } = new PlaceHolderDemon("Soberbia");
-        public IDemon Ira { get; } = new PlaceHolderDemon("Ira");
-        public IDemon Pereza { get; } = new PlaceHolderDemon("Pereza");
-        public IDemon Codicia { get; } = new PlaceHolderDemon("Codicia");
+        public IDemonParsed Gula { get; } = new LogicalDemonParsed("Gula");
+        public IDemonParsed Envidia { get; } = new LogicalDemonParsed("Envidia");
+        public IDemonParsed Lujuria { get; } = new LogicalDemonParsed("Lujuria");
+        public IDemonParsed Soberbia { get; } = new LogicalDemonParsed("Soberbia");
+        public IDemonParsed Ira { get; } = new LogicalDemonParsed("Ira");
+        public IDemonParsed Pereza { get; } = new LogicalDemonParsed("Pereza");
+        public IDemonParsed Codicia { get; } = new LogicalDemonParsed("Codicia");
         
-        public List<IDemon> EveryDemon { get; } = new List<IDemon>();
+        public List<IDemonParsed> EveryDemon { get; } = new List<IDemonParsed>();
             
         public override void Constructor()
         {
@@ -33,12 +33,12 @@ namespace Demons
             EveryDemon.Add(Codicia);
         }
 
-        public IDemon GetDemon(string name)
+        public IDemonParsed GetDemon(string name)
         {
             return EveryDemon.First(e => e.Sin==name);
         }
         
-        public IDemon Random()
+        public IDemonParsed Random()
         {
             return EveryDemon.ToArray().Rand();
         }

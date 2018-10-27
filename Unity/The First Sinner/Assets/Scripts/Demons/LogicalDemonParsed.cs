@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Demons
 {
-    public class PlaceHolderDemon : IDemon
+    public class LogicalDemonParsed : IDemonParsed
     {
         public string Sin { get; private set; }
         public float Health { get; private set; }
 
-        public PlaceHolderDemon(string name)
+        public LogicalDemonParsed(string name)
         {
             Sin = name;
         }

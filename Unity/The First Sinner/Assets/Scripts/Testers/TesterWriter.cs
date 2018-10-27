@@ -1,4 +1,5 @@
 using InputManager;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,41 +8,25 @@ namespace Testers
     public class TesterWriter : MonoBehaviour
     {
 
-        private Writer Writer => Writer.Instance;
+        private DialogWriter Wt => DialogWriter.Instance;
 
         [FormerlySerializedAs("Texto a ingresar")][SerializeField]
         private string text = "";
 
         private AbstractDiscreteInput
 
-            settext, //B
-            hurryup;//D
-
+            encolar,
+            enter;
+        private Messages _messages => Messages.Instance;
+        
         private void Awake()
         {
-
-            settext = new DiscreteKeyboard(KeyCode.E);
-            
-            hurryup = new DiscreteKeyboard(KeyCode.H);
-            
- 
-
-
-            settext.Event += SettextOnEvent;
-            hurryup.Event += Writer.HurryUp;
-
+            encolar = new DiscreteKeyboard(KeyCode.E);
+            enter = new DiscreteKeyboard(KeyCode.H);
+            encolar.Event += () => _messages.AddMessage(text);
+            enter.Event += () => _messages.Enter();
         }
 
-        private void HurryupOnEvent()
-        {
-            Writer.HurryUp();
-        }
-
-
-        private void SettextOnEvent()
-        {
-            Writer.SetText(text);
-        }
         
         
     }
