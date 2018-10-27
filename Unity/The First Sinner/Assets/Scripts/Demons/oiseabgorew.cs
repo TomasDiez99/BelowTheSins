@@ -1,23 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Patterns;
 using UnityEngine;
 
 namespace Demons
 {
-    public interface IDemon
-    {
-        float Health { get; }
-    }
-
-
-
-    public interface IPhrase
-    {
-        string Demon { get; }
-        string Content { get; }
-        List<IDemon> SinsRelated { get; }
-    }
+    
     /// <summary>
     /// Contents all demons (Statically)
     /// </summary>
@@ -30,15 +19,25 @@ namespace Demons
         public IDemon Ira { get; } = new PlaceHolderDemon();
         public IDemon Pereza { get; } = new PlaceHolderDemon();
         public IDemon Codicia { get; } = new PlaceHolderDemon();
-    
-    
-    
-    
-    
-    }
+        
+        public List<IDemon> EveryDemon { get; } = new List<IDemon>();
+            
+        public override void Constructor()
+        {
+            EveryDemon.Add(Gula);
+            EveryDemon.Add(Envidia);
+            EveryDemon.Add(Lujuria);
+            EveryDemon.Add(Soberbia);
+            EveryDemon.Add(Ira);
+            EveryDemon.Add(Pereza);
+            EveryDemon.Add(Codicia);
+        }
 
-    public class PlaceHolderDemon : IDemon
-    {
-        public float Health { get; }
+       
+        
+        public IDemon Random()
+        {
+            return EveryDemon.ToArray().Rand();
+        }
     }
 }

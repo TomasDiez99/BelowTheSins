@@ -26,6 +26,9 @@ namespace Patterns
         public void Awake()
         {
             Instance = (S)this;
+            Constructor();
+            
         }
+        public virtual void Constructor(){}
     }
 }
