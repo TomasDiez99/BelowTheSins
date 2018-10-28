@@ -1,15 +1,18 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Demons
 {
-    public class Phrase : IPhrase
+    public class Confesion : IPhrase
     {
         public string Content { get; protected set; }
         public List<IDemonParsed> SinsRelated { get; }
+        [Range(1,15)]public int delayAtShowText;
 
-        public Phrase(string content)
+        public Confesion(string content)
         {
             Content = content;
+            delayAtShowText = 10;
             SinsRelated= new List<IDemonParsed>();
         }
     }

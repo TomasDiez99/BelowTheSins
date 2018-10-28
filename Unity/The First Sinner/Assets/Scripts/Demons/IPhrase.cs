@@ -8,5 +8,6 @@ namespace Demons
     {
         string Content { get; }
         List<IDemonParsed> SinsRelated { get; }
+        
     }
 }

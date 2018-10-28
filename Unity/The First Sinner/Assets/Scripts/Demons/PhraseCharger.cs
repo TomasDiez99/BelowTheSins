@@ -16,7 +16,7 @@ namespace Demons
             PhraseField[] toPhrases = JsonConvert.DeserializeObject<PhraseField[]>(json);
             foreach (PhraseField phraseField in toPhrases )
             {
-                IPhrase phrase= new Phrase(phraseField.Content);
+                IPhrase phrase= new Confesion(phraseField.Content);
                 phrases.Add(phrase);
                 foreach (string sin in phraseField.Demons)
                 {

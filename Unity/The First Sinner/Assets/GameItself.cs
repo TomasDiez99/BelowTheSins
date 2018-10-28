@@ -65,7 +65,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		currentSinner = SinnerGetter.Instance.GetOne();
 		
 		
-		ToWrite.SetText(currentSinner._conf.text);
+		ToWrite.SetText(currentSinner.Confesion.Content);
 		Action run = ()=>tecla.Event += SelectTarget;
 		ToWrite.OnComplete(run);
 		PersonPic.Instance.HideNow();
@@ -77,7 +77,7 @@ public class GameItself : ScriptSingleton<GameItself>
 	{
 		var resolver= StatsResolver.Instance;
 		resolver.Increment(demon);
-		var sinsRelated = currentSinner._phrase.SinsRelated;
+		var sinsRelated = currentSinner.Confesion.SinsRelated;
 		foreach (IDemonParsed demonParsed in sinsRelated)
 		{
 			if (demonParsed!=demon)
