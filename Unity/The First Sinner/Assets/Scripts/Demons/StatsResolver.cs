@@ -14,7 +14,7 @@ namespace Demons
 
         public void Decrement(IDemonParsed logical)
         {
-            point.Decrement(logical);
+            point.Decrement(logical);            
         }
     }
 }

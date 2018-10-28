@@ -144,7 +144,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			if (demonParsed!=demon)
 			{
 				resolver.Decrement(demonParsed);
-				if (demonParsed.Health == 0)
+				if (demonParsed.Health == 0 || demonParsed.Health==10)
 				{
 					gameOver = true;
 				}
@@ -153,9 +153,13 @@ public class GameItself : ScriptSingleton<GameItself>
 		}
 		if (gameOver)
 		{
-						
+			GameOver();
 		}
-		tecla.Event += GameStart;
+		else
+		{
+			tecla.Event += GameStart;	
+		}
+		
 	}
 
 	public void GameOver()

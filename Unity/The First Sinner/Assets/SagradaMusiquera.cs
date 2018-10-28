@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Patterns;
 using UnityEditor;
 using UnityEngine;
 
-public class SagradaMusiquera : ScriptableSingleton<SagradaMusiquera>
+public class SagradaMusiquera : ScriptSingleton<SagradaMusiquera>
 {
 
 	public AudioSource Win,
