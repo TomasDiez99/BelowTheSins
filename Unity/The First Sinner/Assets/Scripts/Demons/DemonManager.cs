@@ -12,20 +12,28 @@ namespace Demons
     public class DemonManager : ScriptSingleton<DemonManager>
     {
         public static HalosBars Halos => HalosBars.Instance;
-        public IDemonParsed Gula { get; } = new LogicalDemonParsed("Gula", Halos.HaloGluttony);
-        public IDemonParsed Envidia { get; } = new LogicalDemonParsed("Envidia", Halos.HaloEnvy);
-        public IDemonParsed Lujuria { get; } = new LogicalDemonParsed("Lujuria", Halos.HaloLust);
-        public IDemonParsed Soberbia { get; } = new LogicalDemonParsed("Soberbia", Halos.HaloPride);
-        public IDemonParsed Ira { get; } = new LogicalDemonParsed("Ira", Halos.HaloPride);
-        public IDemonParsed Pereza { get; } = new LogicalDemonParsed("Pereza", Halos.HaloSloth);
-        public IDemonParsed Codicia { get; } = new LogicalDemonParsed("Codicia", Halos.HaloGreed);
+        public IDemonParsed Gula { get; set; }
+        public IDemonParsed Envidia { get; set; }
+        public IDemonParsed Lujuria { get; set; }
+        public IDemonParsed Soberbia { get; set; }
+        public IDemonParsed Ira { get; set; }
+        public IDemonParsed Pereza { get; set; }
+        public IDemonParsed Codicia { get; set; }
 
         public List<IDemonParsed> EveryDemon { get; } = new List<IDemonParsed>();
 
         public override void Constructor()
         {
+            Gula = new LogicalDemonParsed("Gula", Halos.HaloGluttony);
+            Envidia = new LogicalDemonParsed("Envidia", Halos.HaloEnvy);
+            Lujuria = new LogicalDemonParsed("Lujuria", Halos.HaloLust);
+            Soberbia = new LogicalDemonParsed("Soberbia", Halos.HaloPride);
+            Ira = new LogicalDemonParsed("Ira", Halos.HaloWrath);
+            Pereza = new LogicalDemonParsed("Pereza", Halos.HaloSloth);
+            Codicia = new LogicalDemonParsed("Codicia", Halos.HaloGreed);
+
+
             EveryDemon.Add(Gula);
-            Gula.Health = 30;
             EveryDemon.Add(Envidia);
             EveryDemon.Add(Lujuria);
             EveryDemon.Add(Soberbia);
@@ -36,7 +44,7 @@ namespace Demons
 
         public string[] DemonNames =
         {
-            "Ira", "Soberbia", "Pereza", "Lujuria","Envidia", "Codicia","Gula"
+            "Ira", "Soberbia", "Pereza", "Lujuria", "Envidia", "Codicia", "Gula"
         };
 
         public IDemonParsed GetDemon(string name)
@@ -46,7 +54,7 @@ namespace Demons
 
         public IDemonParsed GetDemon(int i)
         {
-            return GetDemon(DemonNames.[0]);
+            return GetDemon(DemonNames[i]);
         }
 
         public IDemonParsed Random()

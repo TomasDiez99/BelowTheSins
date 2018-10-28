@@ -9,7 +9,7 @@ namespace Demons
     {
         public Image Halo { get; }
         public string Sin { get; private set; }
-        [Range(0,100)]private float _healt=5;
+        [Range(0,100)]private float _healt=0;
         
         public float Health
         {
@@ -25,7 +25,7 @@ namespace Demons
         {
             Halo = halos;
             Sin = name;
-            Health = 40;
+            Health=5;
         }
     }
 

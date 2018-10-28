@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Demons;
+using DG.Tweening;
 using InputManager;
 using Patterns;
 using UnityEngine;
@@ -13,9 +14,10 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	public DialogWriter ToWrite => FindObjectOfType<DialogWriter>();
 	private AbstractDiscreteInput tecla,right,left;
-	private int index = 0;
+	private int index = 4;
 	private const int minCapital=0;
-	private const int maxCapital = 7; 
+	private const int maxCapital = 6;
+	private IDemonParsed demon;
 	
 	
 	private void Start()
@@ -27,12 +29,19 @@ public class GameItself : ScriptSingleton<GameItself>
 		right.Event += SelectRight;
 		left.Event += SelectLeft;
 		tecla.Event += BeginGame;
+		Select();
 		
+	}
+
+	private void Select()
+	{
+		demon=DemonManager.Instance.GetDemon(index);
 	}
 
 	private void SelectLeft()
 	{
 		index = index == minCapital ? maxCapital : index - 1;
+		
 	}
 
 	private void SelectRight()
@@ -49,8 +58,10 @@ public class GameItself : ScriptSingleton<GameItself>
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
 		PersonPic.Instance.SetPic(sinner._sprite);
+		
+		
 
-		DemonManager.Instance.GetDemon(index);
+		
 
 	}
 	
