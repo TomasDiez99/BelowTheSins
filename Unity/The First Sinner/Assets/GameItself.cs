@@ -179,6 +179,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		}
 
 		gameOver=DemonManager.Instance.IsGameOver();
+		Malotes--;
 		if (gameOver)
 		{
 			tecla.Event += GameOver;
@@ -187,7 +188,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		}
 		else
 		{
-			Malotes--;
+			
 			if (Malotes == 0)
 			{
 				Win = true;

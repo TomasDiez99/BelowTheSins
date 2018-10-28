@@ -40,7 +40,7 @@ namespace Sinners
             Confesion a= _confesionsArray[index--];
             if (index == 0)
             {
-                GameItself
+                GameItself.Instance.Win = true;
             }
         }
     }
