@@ -10,6 +10,7 @@ using UnityEngine;
 using Sinners;
 using Tools;
 using UI;
+using UnityEngine.UI;
 
 
 public class GameItself : ScriptSingleton<GameItself>
@@ -29,11 +30,14 @@ public class GameItself : ScriptSingleton<GameItself>
 	public int Malotes { get; set; } = 12;
 	public bool gameOver;
 	public bool Win;
+	public Image ui;
+	
 	
 	
 	private void Start()
 	{
-		Debug.Log(Malotes+" <-----");
+
+		ui.enabled = false;
 		SagradaMusiquera.Instance.PlayMenu();
 		tecla = new DiscreteKeyboard(KeyCode.Return);
 		right = new DiscreteKeyboard(KeyCode.RightArrow);
@@ -74,6 +78,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		if (!started)
 		{
 			FondoMenu.enabled = false;
+			ui.enabled = true;
 			SagradaMusiquera.Instance.PlayAmbiance();
 			SagradaMusiquera.Instance.PlayChurch();
 		}
@@ -155,7 +160,12 @@ public class GameItself : ScriptSingleton<GameItself>
 		
 		
 		ToWrite.SetText(currentSinner.Confesion.Content);
-		Action run = ()=>tecla.Event += SelectTarget;
+		tecla.Event += DialogWriter.Instance.HurryUp;
+		Action run = () =>
+		{
+			tecla.Event -= DialogWriter.Instance.HurryUp;
+			tecla.Event += SelectTarget;
+		};
 		ToWrite.OnComplete(run);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
@@ -165,6 +175,7 @@ public class GameItself : ScriptSingleton<GameItself>
 	private void SelectTarget()
 	{
 		tecla.Event -= SelectTarget;
+		
 		var resolver= StatsResolver.Instance;
 		resolver.Increment(demon);
 		var sinsRelated = currentSinner.Confesion.SinsRelated;

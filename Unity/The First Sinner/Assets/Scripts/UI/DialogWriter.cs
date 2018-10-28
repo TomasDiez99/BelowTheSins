@@ -10,7 +10,7 @@ namespace UI
 
     public class DialogWriter : ScriptSingleton<DialogWriter>, IWriter
     {
-        private int delay=10, frame=0, i=0;
+        private int delay=5, frame=0, i=0;
         private string textToShow ;
         private bool working = false;
         private Action _onComplete;
