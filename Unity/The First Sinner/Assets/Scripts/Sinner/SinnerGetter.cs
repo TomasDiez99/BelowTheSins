@@ -42,6 +42,8 @@ namespace Sinners
             {
                 GameItself.Instance.Win = true;
             }
+
+            return a;
         }
     }
 }
