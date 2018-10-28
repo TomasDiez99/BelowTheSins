@@ -13,6 +13,7 @@ namespace Sinners
         public List<IPhrase> _phrases =new List<IPhrase>();
         private Confesion[] _confesionsArray;
         private bool isInit;
+        private int index;
 
         private void Init()
         {
@@ -24,6 +25,8 @@ namespace Sinners
             {
                 _confesionsArray[num++] = phrase;
             }
+
+            index = _phrases.Count;
         }
 
         public Sinner GetOne()
@@ -34,7 +37,11 @@ namespace Sinners
 
         private Confesion RandStr()
         {
-            return _confesionsArray.Rand();
+            Confesion a= _confesionsArray[index--];
+            if (index == 0)
+            {
+                GameItself
+            }
         }
     }
 }

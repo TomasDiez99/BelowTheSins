@@ -173,13 +173,12 @@ public class GameItself : ScriptSingleton<GameItself>
 			if (demonParsed!=demon)
 			{
 				resolver.Decrement(demonParsed);
-				if (demonParsed.Health == 0 || demonParsed.Health==10)
-				{
-					gameOver = true;
-				}
+				
 			}
 			
 		}
+
+		gameOver=DemonManager.Instance.IsGameOver();
 		if (gameOver)
 		{
 			tecla.Event += GameOver;
@@ -209,9 +208,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		SagradaMusiquera.Instance.StopAmbiance();
 		SagradaMusiquera.Instance.StopChurch();
 		SagradaMusiquera.Instance.WinSound();
-		SagradaMusiquera.Instance.StopAmbiance();
-		SagradaMusiquera.Instance.StopChurch();
-		SagradaMusiquera.Instance.LoseSound();
+		
 		string[] r =
 		{
 			"Congratulations, you are free for now",

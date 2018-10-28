@@ -61,5 +61,25 @@ namespace Demons
         {
             return EveryDemon.ToArray().Rand();
         }
+
+        public bool IsGameOver()
+        {
+            var perdi = false;
+            foreach (IDemonParsed d in EveryDemon)
+            {
+                var vida = d.Health;
+                if (vida==0 )
+                {
+                    return true;
+                }
+
+                if (vida == 10)
+                {
+                    return true;
+                }
+            }
+
+            return perdi;
+        }
     }
 }
