@@ -160,12 +160,7 @@ public class GameItself : ScriptSingleton<GameItself>
 		
 		
 		ToWrite.SetText(currentSinner.Confesion.Content);
-		tecla.Event += DialogWriter.Instance.HurryUp;
-		Action run = () =>
-		{
-			tecla.Event -= DialogWriter.Instance.HurryUp;
-			tecla.Event += SelectTarget;
-		};
+		Action run = ()=>tecla.Event += SelectTarget;
 		ToWrite.OnComplete(run);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
