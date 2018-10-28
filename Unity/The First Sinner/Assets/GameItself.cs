@@ -134,7 +134,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			tecla.Event -= DialogWriter.Instance.HurryUp;
 			TimeStuff.DoAfter(() =>
 			{
-				print(s,num);	
+				printOver(s,num);	
 			},2);
 			
 		});
@@ -217,7 +217,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			"Congratulations, you are free for now",
 			"But, not of your sins."
 		};
-		printOver();(r,0);
+		printOver(r,0);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
 		PersonPic.Instance.SetPic(EvilChabon);
