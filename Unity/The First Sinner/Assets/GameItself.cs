@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Demons;
 using DG.Tweening;
 using InputManager;
@@ -25,11 +26,15 @@ public class GameItself : ScriptSingleton<GameItself>
 	private bool started;
 	public SpriteRenderer FondoMenu;
 	public Sprite EvilChabon;
+	public int Malotes;
+	public bool gameOver;
+	public bool Win;
 	
 	
 	private void Start()
 	{
-		
+		Malotes=SinnerGetter.Instance._phrases.Count();
+		SagradaMusiquera.Instance.PlayMenu();
 		tecla = new DiscreteKeyboard(KeyCode.Return);
 		right = new DiscreteKeyboard(KeyCode.RightArrow);
 		left = new DiscreteKeyboard(KeyCode.LeftArrow);
@@ -69,6 +74,8 @@ public class GameItself : ScriptSingleton<GameItself>
 		if (!started)
 		{
 			FondoMenu.enabled = false;
+			SagradaMusiquera.Instance.PlayAmbiance();
+			SagradaMusiquera.Instance.PlayChurch();
 		}
 		tecla.Event -= BeginGame;
 
@@ -96,7 +103,10 @@ public class GameItself : ScriptSingleton<GameItself>
 		if (i == s.Length)
 		{
 			tecla.Event -= DialogWriter.Instance.HurryUp;
-			GameStart();
+			if (!gameOver || !Win)
+			{
+				GameStart();	
+			}
 			return;
 		}
 		tecla.Event += DialogWriter.Instance.HurryUp;
@@ -111,6 +121,8 @@ public class GameItself : ScriptSingleton<GameItself>
 			
 		});
 	}
+
+	
 
 	public void GameStart()
 	{
@@ -138,7 +150,6 @@ public class GameItself : ScriptSingleton<GameItself>
 		var resolver= StatsResolver.Instance;
 		resolver.Increment(demon);
 		var sinsRelated = currentSinner.Confesion.SinsRelated;
-		bool gameOver = false;
 		foreach (IDemonParsed demonParsed in sinsRelated)
 		{
 			if (demonParsed!=demon)
@@ -153,27 +164,60 @@ public class GameItself : ScriptSingleton<GameItself>
 		}
 		if (gameOver)
 		{
-			GameOver();
+			tecla.Event += GameOver;	
+			
 		}
 		else
 		{
-			tecla.Event += GameStart;	
+			Malotes--;
+			if (Malotes == 0)
+			{
+				Win = true;
+				tecla.Event += Winner;
+			}
+			else
+			{
+				tecla.Event += GameStart;	
+			}
+				
 		}
 		
 	}
 
+	private void Winner()
+	{
+		SagradaMusiquera.Instance.StopAmbiance();
+		SagradaMusiquera.Instance.StopChurch();
+		SagradaMusiquera.Instance.WinSound();
+		SagradaMusiquera.Instance.StopAmbiance();
+		SagradaMusiquera.Instance.StopChurch();
+		SagradaMusiquera.Instance.LoseSound();
+		string[] r =
+		{
+			"Congratulations, you are free for now",
+			"But, not of your sins."
+		};
+		print(r,0);
+		PersonPic.Instance.HideNow();
+		PersonPic.Instance.SetVisible(true);
+		PersonPic.Instance.SetPic(EvilChabon);
+	}
+
 	public void GameOver()
 	{
+		SagradaMusiquera.Instance.StopAmbiance();
+		SagradaMusiquera.Instance.StopChurch();
+		SagradaMusiquera.Instance.LoseSound();
 		string[] r =
 		{
 			"Priest, you have failed to fulfill your duty.",
 			"Your soul will now become the precious nurture for our immortal bodies.",
 			"Say goodbye to the remnants of your human spirit."
 		};
-
-	print(r,0);
+		print(r,0);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
 		PersonPic.Instance.SetPic(EvilChabon);
+		
 	}
 }

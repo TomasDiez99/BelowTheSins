@@ -10,7 +10,7 @@ namespace Sinners
 {
     public class SinnerGetter : ScriptSingleton<SinnerGetter>
     {
-        private List<IPhrase> _phrases =new List<IPhrase>();
+        public List<IPhrase> _phrases =new List<IPhrase>();
         private Confesion[] _confesionsArray;
         private bool isInit;
 
