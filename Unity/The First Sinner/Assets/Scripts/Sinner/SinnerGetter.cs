@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Demons;
 using JetBrains.Annotations;
 using Patterns;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Sinners

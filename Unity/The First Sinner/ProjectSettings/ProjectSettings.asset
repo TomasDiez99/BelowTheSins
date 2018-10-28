@@ -616,7 +616,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: ece4188b-f789-49d2-9848-9ddd982fdff7
   projectName: The First Sinner
   organizationId: alv_mivan
