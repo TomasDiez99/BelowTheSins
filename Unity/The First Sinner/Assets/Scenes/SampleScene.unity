@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0011c67b5905e304aa0af9acb4616e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FondoMenu: {fileID: 1659108798}
+  EvilChabon: {fileID: 21300000, guid: 8f9ca8a21e06b4e409c2657bad4d95d5, type: 3}
 --- !u!4 &3922127
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ GameObject:
   - component: {fileID: 78642118}
   - component: {fileID: 78642120}
   - component: {fileID: 78642119}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +371,7 @@ GameObject:
   - component: {fileID: 221127129}
   - component: {fileID: 221127131}
   - component: {fileID: 221127130}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +637,7 @@ GameObject:
   - component: {fileID: 345327885}
   - component: {fileID: 345327884}
   - component: {fileID: 345327883}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Orgullo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +766,7 @@ GameObject:
   - component: {fileID: 354086384}
   - component: {fileID: 354086386}
   - component: {fileID: 354086385}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +836,7 @@ GameObject:
   - component: {fileID: 382071084}
   - component: {fileID: 382071086}
   - component: {fileID: 382071085}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,9 +956,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -385372515
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300004, guid: fb5f0ace42310bb49aed23405b66272e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7362539}
   m_FlipX: 0
@@ -1087,7 +1089,7 @@ GameObject:
   - component: {fileID: 419460798}
   - component: {fileID: 419460797}
   - component: {fileID: 419460796}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloLust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1943,6 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795121f77353e3b4ba50ca71bfa4237e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CajaTexto: {fileID: 467770604}
 --- !u!114 &615402660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,7 +2697,7 @@ GameObject:
   - component: {fileID: 886817474}
   - component: {fileID: 886817476}
   - component: {fileID: 886817475}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2763,7 +2766,7 @@ GameObject:
   - component: {fileID: 931856753}
   - component: {fileID: 931856755}
   - component: {fileID: 931856754}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2908,7 +2911,7 @@ GameObject:
   - component: {fileID: 994870706}
   - component: {fileID: 994870708}
   - component: {fileID: 994870707}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3177,7 +3180,7 @@ GameObject:
   - component: {fileID: 1199234096}
   - component: {fileID: 1199234098}
   - component: {fileID: 1199234097}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3391,7 +3394,7 @@ GameObject:
   - component: {fileID: 1232834384}
   - component: {fileID: 1232834386}
   - component: {fileID: 1232834385}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3520,7 +3523,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250828784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.27, z: -7.8}
+  m_LocalPosition: {x: -0.11, y: -3.98, z: -7.8}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3967,7 +3970,7 @@ GameObject:
   - component: {fileID: 1571557515}
   - component: {fileID: 1571557517}
   - component: {fileID: 1571557516}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4237,7 +4240,7 @@ GameObject:
   - component: {fileID: 1606738761}
   - component: {fileID: 1606738760}
   - component: {fileID: 1606738759}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: HaloPride
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4330,7 +4333,7 @@ GameObject:
   - component: {fileID: 1638297621}
   - component: {fileID: 1638297623}
   - component: {fileID: 1638297622}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4399,7 +4402,7 @@ GameObject:
   - component: {fileID: 1653266686}
   - component: {fileID: 1653266688}
   - component: {fileID: 1653266687}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4459,6 +4462,81 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653266685}
   m_CullTransparentMesh: 0
+--- !u!1 &1659108797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659108799}
+  - component: {fileID: 1659108798}
+  m_Layer: 0
+  m_Name: menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1659108798
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659108797}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 60867cc6e44cd4beb929d1cc8cf6c9fb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 11.79, y: 6.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1659108799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659108797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.41, z: -10}
+  m_LocalScale: {x: 1.65, y: 1.47, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665768184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,7 +4641,7 @@ GameObject:
   - component: {fileID: 1773691933}
   - component: {fileID: 1773691935}
   - component: {fileID: 1773691934}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4757,7 +4835,7 @@ GameObject:
   - component: {fileID: 1937832199}
   - component: {fileID: 1937832201}
   - component: {fileID: 1937832200}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HaloIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,3 +5093,10 @@ MonoBehaviour:
   HaloPride: {fileID: 1199234097}
   HaloSloth: {fileID: 382071085}
   HaloWrath: {fileID: 886817475}
+  HaloEnvyOut: {fileID: 354086385}
+  HaloLustOut: {fileID: 1653266687}
+  HaloGluttonyOut: {fileID: 1773691934}
+  HaloGreedOut: {fileID: 1571557516}
+  HaloPrideOut: {fileID: 78642119}
+  HaloSlothOut: {fileID: 1232834385}
+  HaloWrathOut: {fileID: 221127130}

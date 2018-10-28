@@ -7,7 +7,8 @@ namespace Demons
 {
     public class LogicalDemonParsed : IDemonParsed
     {
-        public Image Halo { get; }
+        public Image HaloOut { get; }
+        public Image HaloIn { get; set; }
         public string Sin { get; private set; }
         [Range(0,100)]private float _healt=0;
         
@@ -16,14 +17,18 @@ namespace Demons
             get { return _healt; }
             set
             {
-                var fill=Halo.DOFillAmount(value/10,2);
+                var fill=HaloIn.DOFillAmount(value/10,2);
                 fill.OnComplete(() => _healt = value);
             }
         }
 
-        public LogicalDemonParsed(string name, Image halos)
+        public LogicalDemonParsed(string name, Image haloIn,Image haloOut)
         {
-            Halo = halos;
+            HaloOut = haloOut;
+            HaloIn = haloIn;
+            HaloOut.enabled = false;
+            HaloIn.enabled = false;
+            
             Sin = name;
             Health=5;
         }

@@ -24,13 +24,13 @@ namespace Demons
 
         public override void Constructor()
         {
-            Gula = new LogicalDemonParsed("Gula", Halos.HaloGluttony);
-            Envidia = new LogicalDemonParsed("Envidia", Halos.HaloEnvy);
-            Lujuria = new LogicalDemonParsed("Lujuria", Halos.HaloLust);
-            Soberbia = new LogicalDemonParsed("Soberbia", Halos.HaloPride);
-            Ira = new LogicalDemonParsed("Ira", Halos.HaloWrath);
-            Pereza = new LogicalDemonParsed("Pereza", Halos.HaloSloth);
-            Codicia = new LogicalDemonParsed("Codicia", Halos.HaloGreed);
+            Gula = new LogicalDemonParsed("Gula", Halos.HaloGluttony,Halos.HaloGluttonyOut);
+            Envidia = new LogicalDemonParsed("Envidia", Halos.HaloEnvy,Halos.HaloEnvyOut);
+            Lujuria = new LogicalDemonParsed("Lujuria", Halos.HaloLust,Halos.HaloLustOut);
+            Soberbia = new LogicalDemonParsed("Soberbia", Halos.HaloPride,Halos.HaloPrideOut);
+            Ira = new LogicalDemonParsed("Ira", Halos.HaloWrath,Halos.HaloWrathOut);
+            Pereza = new LogicalDemonParsed("Pereza", Halos.HaloSloth,Halos.HaloSlothOut);
+            Codicia = new LogicalDemonParsed("Codicia", Halos.HaloGreed,Halos.HaloGreedOut);
 
 
             EveryDemon.Add(Gula);

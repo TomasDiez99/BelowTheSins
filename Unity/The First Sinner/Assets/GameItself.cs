@@ -7,6 +7,7 @@ using InputManager;
 using Patterns;
 using UnityEngine;
 using Sinners;
+using Tools;
 using UI;
 
 
@@ -21,10 +22,14 @@ public class GameItself : ScriptSingleton<GameItself>
 	private IDemonParsed demon;
 	private Color colorPrevius;
 	private Sinner currentSinner;
+	private bool started;
+	public SpriteRenderer FondoMenu;
+	public Sprite EvilChabon;
 	
 	
 	private void Start()
 	{
+		
 		tecla = new DiscreteKeyboard(KeyCode.Return);
 		right = new DiscreteKeyboard(KeyCode.RightArrow);
 		left = new DiscreteKeyboard(KeyCode.LeftArrow);
@@ -40,11 +45,11 @@ public class GameItself : ScriptSingleton<GameItself>
 	{
 		if (demon != null)
 		{
-			demon.Halo.DOColor(colorPrevius, 1);
+			demon.HaloIn.DOColor(colorPrevius, 1);
 		} 
 		demon=DemonManager.Instance.GetDemon(index);
-		colorPrevius = demon.Halo.color;
-		var color =demon.Halo.DOColor(Color.black, 1);
+		colorPrevius = demon.HaloIn.color;
+		var color =demon.HaloIn.DOColor(Color.black, 1);
 	}
 
 	private void SelectLeft()
@@ -61,7 +66,61 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	public void BeginGame()
 	{
+		if (!started)
+		{
+			FondoMenu.enabled = false;
+		}
 		tecla.Event -= BeginGame;
+
+		string[] a = {
+			"Priest, you're finally here. We were waiting for you.",
+			"We were told that you're trying to hide a dreadful sin you've committed recently.",
+			"Such cruel actions for an honorable man like you, Father.",
+			"We are willing to help you but only if you're willing to pay a certain price.",
+			"It's your duty to feed us with the spirits of the dead sinners today.",
+			"But be careful.",
+			"You are required to assign the right soul to each of us.",
+			"If you fail to keep us all well-fed and balanced, the hungriest demon will eat you alive.",
+			"Let the feast begin."
+		};
+		
+		print(a,0);
+		PersonPic.Instance.HideNow();
+		PersonPic.Instance.SetVisible(true);
+		PersonPic.Instance.SetPic(EvilChabon);
+	}
+
+	public void print(string[] s,int i)
+	{
+		var num = i;
+		if (i == s.Length)
+		{
+			tecla.Event -= DialogWriter.Instance.HurryUp;
+			GameStart();
+			return;
+		}
+		tecla.Event += DialogWriter.Instance.HurryUp;
+		ToWrite.SetText(s[num++]);
+		ToWrite.OnComplete(()=>
+		{
+			tecla.Event -= DialogWriter.Instance.HurryUp;
+			TimeStuff.DoAfter(() =>
+			{
+				print(s,num);	
+			},2);
+			
+		});
+	}
+
+	public void GameStart()
+	{
+		tecla.Event -= GameStart;
+		foreach (var d in DemonManager.Instance.EveryDemon)
+		{
+			d.HaloOut.enabled = true;
+			d.HaloIn.enabled = true;
+		}
+		
 		currentSinner = SinnerGetter.Instance.GetOne();
 		
 		
@@ -75,19 +134,42 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	private void SelectTarget()
 	{
+		tecla.Event -= SelectTarget;
 		var resolver= StatsResolver.Instance;
 		resolver.Increment(demon);
 		var sinsRelated = currentSinner.Confesion.SinsRelated;
+		bool gameOver = false;
 		foreach (IDemonParsed demonParsed in sinsRelated)
 		{
 			if (demonParsed!=demon)
 			{
-				resolver.Decrement(demonParsed);	
+				resolver.Decrement(demonParsed);
+				if (demonParsed.Health == 0)
+				{
+					gameOver = true;
+				}
 			}
 			
 		}
+		if (gameOver)
+		{
+						
+		}
+		tecla.Event += GameStart;
+	}
 
-		tecla.Event -= SelectTarget;
-		tecla.Event += BeginGame;
+	public void GameOver()
+	{
+		string[] r =
+		{
+			"Priest, you have failed to fulfill your duty.",
+			"Your soul will now become the precious nurture for our immortal bodies.",
+			"Say goodbye to the remnants of your human spirit."
+		};
+
+	print(r,0);
+		PersonPic.Instance.HideNow();
+		PersonPic.Instance.SetVisible(true);
+		PersonPic.Instance.SetPic(EvilChabon);
 	}
 }

@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 
-public class SagradaMusiquera : MonoBehaviour
+public class SagradaMusiquera : ScriptableSingleton<SagradaMusiquera>
 {
 
 	public AudioSource Win,

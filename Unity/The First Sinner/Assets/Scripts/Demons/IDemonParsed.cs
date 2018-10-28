@@ -5,8 +5,9 @@ namespace Demons
 {
     public interface IDemonParsed
     {
-        Image Halo { get; }
+        Image HaloOut { get; }
         string Sin { get; }
         float Health { get; set; }
+        Image HaloIn { get; set; }
     }
 }

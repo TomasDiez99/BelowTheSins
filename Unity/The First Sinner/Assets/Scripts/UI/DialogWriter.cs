@@ -1,9 +1,11 @@
 ﻿using System;
 using Patterns;
 using TMPro;
+using Tools;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -15,14 +17,19 @@ namespace UI
         private string textToShow ;
         private bool working = false;
         private Action _onComplete;
+        public Image CajaTexto;
 
         private TextMeshProUGUI TMP => GetComponent<TextMeshProUGUI>();
-    
-    
+
+        public override void Constructor()
+        {
+            CajaTexto.enabled = false;
+        }
 
         public void SetText(string text)
         {
             if (working) return;
+            CajaTexto.enabled = true;
             textToShow = text;
             TMP.text = "";
             i = 0;
@@ -34,6 +41,10 @@ namespace UI
             TMP.text = textToShow;
             i = 0;
             working = false;
+            
+            _onComplete?.Invoke();
+            _onComplete = null;
+
         }
 
         public void SetDelay(int x) => delay = x;
@@ -49,7 +60,7 @@ namespace UI
             if (Completion())
             {
                 working = false;
-                _onComplete.Invoke();
+                _onComplete?.Invoke();
             }
             else
             {
