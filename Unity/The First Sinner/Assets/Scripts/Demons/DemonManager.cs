@@ -44,7 +44,7 @@ namespace Demons
 
         public string[] DemonNames =
         {
-            "Ira", "Soberbia", "Pereza", "Lujuria", "Envidia", "Codicia", "Gula"
+            "Lujuria", "Pereza", "Envidia", "Soberbia", "Ira", "Codicia", "Gula"
         };
 
         public IDemonParsed GetDemon(string name)

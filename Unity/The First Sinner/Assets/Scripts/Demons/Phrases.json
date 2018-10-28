@@ -1,30 +1,76 @@
 [
   {
     "Demons": [
-      "Gula",
-      "Envidia", 
-      "Lujuria",
+      "Ira"
+    ],
+    "Content": "What am I doing in this place? Your faces are so horrible and disgusting. I loathe you all and your disgusting facades."
+  },
+  {
+    "Demons": [
       "Soberbia",
-      "Ira",
-      "Pereza" ,
+      "Lujuria"
+    ],
+    "Content": "My selflove knows no bounds. Although I am kind enough to share. As an altruist being, it's only fair to serve a good portion"
+  },
+  {
+    "Demons": [
+      "Gula"
+    ],
+    "Content": "If give a chance, I will devour every day and every hour. Is over-indulgence a kind of curse? It never happens to get worse."
+  },
+  {
+    "Demons": [
+      "Soberbia"
+    ],
+    "Content": "My name is Noah. I have sinned lots during my short and worthy life. I do not pledge to apologize in any way. I never apologize."
+  },
+  {
+    "Demons": [
+      "Soberbia"
+    ],
+    "Content": "I have six siblings, but they say I'm the worst. You'll find me at the top, but I'll take you to the bottom."
+  },
+  {
+    "Demons": [
+      "Gula",
+      "Pereza"
+    ],
+    "Content": "The last thing from my life, I remember is enjoying time in bed during a cold December. Even if it was already noon. My stomach hurted so much I couldn't move."
+  },
+  {
+    "Demons": [
+      "Pereza"
+    ],
+    "Content": "No movement is what I do, in life some decribed me as blue. I'm not depressed nor tired but the time for movement has expired."
+  },
+  {
+    "Demons": [
+      "Lujuria"
+    ],
+    "Content": " Oh my, you boys are all so handsome and young! It's good to see different faces once in a while. I haven't really sinned within my age but I have only enjoyed the joy of the flesh."
+  },
+  {
+    "Demons": [
+      "Lujuria"
+    ],
+    "Content": "None can resist my charm. Following me won't lead you to any harm. Get too close and you'll be consumed. Fall for me and you'll be doomed."
+  },
+  {
+    "Demons": [
       "Codicia"
     ],
-    "Content": "Esto es una frase primero"
+    "Content": "Find wealth and you'll find me. The color green is your key. But if no riches can be found, you'll stay with me forever bound."
   },
   {
     "Demons": [
-      "Codicia",
-      "Gula",
-      "Ira"
+      "Codicia"
     ],
-    "Content": "Esto es una frase 3"
+    "Content": "If you're privileged, I hate you I want everything so get a clue. Angering me wouln't be really wise. Specially if you have ties"
   },
   {
     "Demons": [
-      "Codicia",
-      "Gula",
       "Ira"
     ],
-    "Content": "Esto es una frase 3"
+    "Content": "I hide the malice in your heart I put on quite the stage. But friend and foe both play their part. To bring an end to every age."
   }
 ]
