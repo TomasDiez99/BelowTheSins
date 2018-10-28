@@ -1,4 +1,5 @@
-﻿using Patterns;
+﻿using System;
+using Patterns;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace UI
         private int delay=10, frame=0, i=0;
         private string textToShow ;
         private bool working = false;
+        private Action _onComplete;
 
         private TextMeshProUGUI TMP => GetComponent<TextMeshProUGUI>();
     
@@ -47,11 +49,17 @@ namespace UI
             if (Completion())
             {
                 working = false;
+                _onComplete.Invoke();
             }
             else
             {
                 TMP.text += textToShow[i++];
             }
+        }
+
+        public void OnComplete(Action run)
+        {
+            _onComplete = run;
         }
 
         private bool Completion() => textToShow.Length <= i;

@@ -11,7 +11,7 @@ namespace Sinners
     public class SinnerGetter : ScriptSingleton<SinnerGetter>
     {
         private List<IPhrase> _phrases =new List<IPhrase>();
-        private string[] _phrasesContent;
+        private Phrase[] _phrasesArray;
         private bool isInit;
 
         private void Init()
@@ -19,24 +19,24 @@ namespace Sinners
             isInit = true;
             PhraseCharger.GetCollection(_phrases);
             int num = 0;
-            _phrasesContent = new string[_phrases.Count];
-            foreach (var phrase in _phrases)
+            _phrasesArray = new Phrase[_phrases.Count];
+            foreach (Phrase phrase in _phrases)
             {
-                _phrasesContent[num++] = phrase.Content;
+                _phrasesArray[num] = phrase;
             }
         }
-
 
         public Sinner GetOne()
         {
             if(!isInit) Init();
+            var p = RandStr();
 		    return new Sinner(Buckets.Instance.Sinners.Rand(),
-		        new Confesion(DemonManager.Instance.Random(),RandStr() ));
+		        new Confesion(p),p);
         }
 
-        private string RandStr()
+        private Phrase RandStr()
         {
-            return _phrasesContent.Rand();
+            return _phrasesArray.Rand();
         }
     }
 }

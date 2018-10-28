@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Demons;
 using DG.Tweening;
@@ -19,11 +20,12 @@ public class GameItself : ScriptSingleton<GameItself>
 	private const int maxCapital = 6;
 	private IDemonParsed demon;
 	private Color colorPrevius;
+	private Sinner currentSinner;
 	
 	
 	private void Start()
 	{
-		tecla = new DiscreteKeyboard(KeyCode.KeypadEnter);
+		tecla = new DiscreteKeyboard(KeyCode.Return);
 		right = new DiscreteKeyboard(KeyCode.RightArrow);
 		left = new DiscreteKeyboard(KeyCode.LeftArrow);
 
@@ -36,7 +38,7 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	private void Selected()
 	{
-		if (colorPrevius != null && demon != null)
+		if (demon != null)
 		{
 			demon.Halo.DOColor(colorPrevius, 1);
 		} 
@@ -59,19 +61,33 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	public void BeginGame()
 	{
-
-		Sinner sinner = SinnerGetter.Instance.GetOne();
+		tecla.Event -= BeginGame;
+		currentSinner = SinnerGetter.Instance.GetOne();
 		
-		ToWrite.SetText(sinner._conf.text);
+		
+		ToWrite.SetText(currentSinner._conf.text);
+		Action run = ()=>tecla.Event += SelectTarget;
+		ToWrite.OnComplete(run);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
-		PersonPic.Instance.SetPic(sinner._sprite);
-		
-		
-
-		
-
+		PersonPic.Instance.SetPic(currentSinner._sprite);
 	}
-	
-	
+
+	private void SelectTarget()
+	{
+		var resolver= StatsResolver.Instance;
+		resolver.Increment(demon);
+		var sinsRelated = currentSinner._phrase.SinsRelated;
+		foreach (IDemonParsed demonParsed in sinsRelated)
+		{
+			if (demonParsed!=demon)
+			{
+				resolver.Decrement(demonParsed);	
+			}
+			
+		}
+
+		tecla.Event -= SelectTarget;
+		tecla.Event += BeginGame;
+	}
 }

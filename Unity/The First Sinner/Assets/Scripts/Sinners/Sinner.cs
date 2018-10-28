@@ -7,26 +7,28 @@ namespace Sinners
     {
         public Sprite _sprite;
         public Confesion _conf;
+        public Phrase _phrase;
+        
 
-        public Sinner(Sprite spr, Confesion c)
+        public Sinner(Sprite spr, Confesion c,Phrase phrase)
         {
             _sprite = spr;
             _conf = c;
+            _phrase = phrase;
+
         }
 
     }
 
-    public struct Confesion
+    public class Confesion
     {
         public string text;
         [Range(1,15)]public int delayAtShowText;
-        public IDemonParsed DemonParsed;
 
-        public Confesion(IDemonParsed demonParsed, string text)
+        public Confesion(Phrase phrase)
         {
             delayAtShowText = 10;
-            this.text = text;
-            this.DemonParsed = demonParsed;    
+            this.text = phrase.Content;
         }
     }
 }
