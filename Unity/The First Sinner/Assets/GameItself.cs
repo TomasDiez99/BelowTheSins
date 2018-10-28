@@ -26,14 +26,14 @@ public class GameItself : ScriptSingleton<GameItself>
 	private bool started;
 	public SpriteRenderer FondoMenu;
 	public Sprite EvilChabon;
-	public int Malotes;
+	public int Malotes { get; set; } = 12;
 	public bool gameOver;
 	public bool Win;
 	
 	
 	private void Start()
 	{
-		Malotes=SinnerGetter.Instance._phrases.Count();
+		Debug.Log(Malotes+" <-----");
 		SagradaMusiquera.Instance.PlayMenu();
 		tecla = new DiscreteKeyboard(KeyCode.Return);
 		right = new DiscreteKeyboard(KeyCode.RightArrow);
@@ -150,7 +150,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			d.HaloOut.enabled = true;
 			d.HaloIn.enabled = true;
 		}
-		
+
 		currentSinner = SinnerGetter.Instance.GetOne();
 		
 		
@@ -180,6 +180,7 @@ public class GameItself : ScriptSingleton<GameItself>
 
 		gameOver=DemonManager.Instance.IsGameOver();
 		Malotes--;
+		Debug.Log(Malotes);
 		if (gameOver)
 		{
 			tecla.Event += GameOver;
@@ -206,6 +207,7 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	private void Winner()
 	{
+		tecla.Event -= Winner;
 		SagradaMusiquera.Instance.StopAmbiance();
 		SagradaMusiquera.Instance.StopChurch();
 		SagradaMusiquera.Instance.WinSound();
@@ -223,6 +225,7 @@ public class GameItself : ScriptSingleton<GameItself>
 
 	public void GameOver()
 	{
+		tecla.Event -= GameOver;
 		SagradaMusiquera.Instance.StopAmbiance();
 		SagradaMusiquera.Instance.StopChurch();
 		SagradaMusiquera.Instance.LoseSound();
