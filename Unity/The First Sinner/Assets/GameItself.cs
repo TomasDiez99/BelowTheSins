@@ -103,10 +103,28 @@ public class GameItself : ScriptSingleton<GameItself>
 		if (i == s.Length)
 		{
 			tecla.Event -= DialogWriter.Instance.HurryUp;
-			if (!gameOver || !Win)
+			GameStart();	
+			return;
+		}
+		tecla.Event += DialogWriter.Instance.HurryUp;
+		ToWrite.SetText(s[num++]);
+		ToWrite.OnComplete(()=>
+		{
+			tecla.Event -= DialogWriter.Instance.HurryUp;
+			TimeStuff.DoAfter(() =>
 			{
-				GameStart();	
-			}
+				print(s,num);	
+			},2);
+			
+		});
+	}
+	
+	public void printOver(string[] s,int i)
+	{
+		var num = i;
+		if (i == s.Length)
+		{
+			tecla.Event -= DialogWriter.Instance.HurryUp;
 			return;
 		}
 		tecla.Event += DialogWriter.Instance.HurryUp;
@@ -164,8 +182,9 @@ public class GameItself : ScriptSingleton<GameItself>
 		}
 		if (gameOver)
 		{
-			tecla.Event += GameOver;	
-			
+			tecla.Event += GameOver;
+			return;
+
 		}
 		else
 		{
@@ -174,6 +193,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			{
 				Win = true;
 				tecla.Event += Winner;
+				return;
 			}
 			else
 			{
@@ -197,7 +217,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			"Congratulations, you are free for now",
 			"But, not of your sins."
 		};
-		print(r,0);
+		printOver();(r,0);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
 		PersonPic.Instance.SetPic(EvilChabon);
@@ -214,7 +234,7 @@ public class GameItself : ScriptSingleton<GameItself>
 			"Your soul will now become the precious nurture for our immortal bodies.",
 			"Say goodbye to the remnants of your human spirit."
 		};
-		print(r,0);
+		printOver(r,0);
 		PersonPic.Instance.HideNow();
 		PersonPic.Instance.SetVisible(true);
 		PersonPic.Instance.SetPic(EvilChabon);
