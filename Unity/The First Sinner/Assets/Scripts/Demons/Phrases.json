@@ -1,9 +1,13 @@
 [
   {
     "Demons": [
-      "Codicia",
       "Gula",
-      "Ira"
+      "Envidia", 
+      "Lujuria",
+      "Soberbia",
+      "Ira",
+      "Pereza" ,
+      "Codicia"
     ],
     "Content": "Esto es una frase"
   },

@@ -12,19 +12,21 @@ namespace Demons
     /// </summary>
     public class DemonManager : ScriptSingleton<DemonManager>
     {
-        public IDemonParsed Gula { get; } = new LogicalDemonParsed("Gula");
-        public IDemonParsed Envidia { get; } = new LogicalDemonParsed("Envidia");
-        public IDemonParsed Lujuria { get; } = new LogicalDemonParsed("Lujuria");
-        public IDemonParsed Soberbia { get; } = new LogicalDemonParsed("Soberbia");
-        public IDemonParsed Ira { get; } = new LogicalDemonParsed("Ira");
-        public IDemonParsed Pereza { get; } = new LogicalDemonParsed("Pereza");
-        public IDemonParsed Codicia { get; } = new LogicalDemonParsed("Codicia");
+        public static HalosBars Halos => HalosBars.Instance;
+        public IDemonParsed Gula { get; } = new LogicalDemonParsed("Gula",Halos.HaloGluttony);
+        public IDemonParsed Envidia { get; } = new LogicalDemonParsed("Envidia",Halos.HaloEnvy);
+        public IDemonParsed Lujuria { get; } = new LogicalDemonParsed("Lujuria",Halos.HaloLust);
+        public IDemonParsed Soberbia { get; } = new LogicalDemonParsed("Soberbia",Halos.HaloPride);
+        public IDemonParsed Ira { get; } = new LogicalDemonParsed("Ira",Halos.HaloPride);
+        public IDemonParsed Pereza { get; } = new LogicalDemonParsed("Pereza",Halos.HaloSloth);
+        public IDemonParsed Codicia { get; } = new LogicalDemonParsed("Codicia",Halos.HaloGreed);
         
         public List<IDemonParsed> EveryDemon { get; } = new List<IDemonParsed>();
             
         public override void Constructor()
         {
             EveryDemon.Add(Gula);
+            Gula.Health = 30;
             EveryDemon.Add(Envidia);
             EveryDemon.Add(Lujuria);
             EveryDemon.Add(Soberbia);
@@ -42,10 +44,6 @@ namespace Demons
         {
             return EveryDemon.ToArray().Rand();
         }
-    
-    
-    
-    
     
     }
 }

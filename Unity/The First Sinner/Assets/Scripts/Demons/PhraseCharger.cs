@@ -8,9 +8,9 @@ namespace Demons
 {
     public class PhraseCharger
     {
-        public void GetCollection(List<IPhrase> phrases)
+        public static void GetCollection(List<IPhrase> phrases)
         {
-            StreamReader r = new StreamReader("Assets/Scripts/Demons/file1.json");
+            StreamReader r = new StreamReader("Assets/Scripts/Demons/Phrases.json");
             string json = r.ReadToEnd();
             r.Close();
             PhraseField[] toPhrases = JsonConvert.DeserializeObject<PhraseField[]>(json);

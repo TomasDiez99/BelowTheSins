@@ -4,7 +4,6 @@ namespace Demons
 {
     public class Phrase : IPhrase
     {
-        public string Demon { get; protected set; }
         public string Content { get; protected set; }
         public List<IDemonParsed> SinsRelated { get; }
 

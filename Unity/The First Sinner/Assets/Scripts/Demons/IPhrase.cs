@@ -6,7 +6,6 @@ namespace Demons
 {
     public interface IPhrase
     {
-        string Demon {get;}
         string Content { get; }
         List<IDemonParsed> SinsRelated { get; }
     }
